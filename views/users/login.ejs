@@ -5,6 +5,16 @@
     <title></title>
   </head>
   <body>
+    <nav>
+      <% include ../partials/nav.ejs %>
+    </nav>
+
+
     <h1>Login</h1>
+    <form action="/users/login" method="post">
+      Username: <input type="text" name="username" placeholder="username">
+      Password: <input type="password" name="password" placeholder="password">
+      <button>Login</button>
+    </form>
   </body>
 </html>

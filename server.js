@@ -40,8 +40,56 @@ mongoose.connection.once('open', () => {
   console.log('connected to Mongo');
 });
 
+// isLoggedIn function
+const isLoggedIn = (req, res, next) => {
+  if(req.isAuthenticated()){
+    return next();
+  }
+  res.redirect('/users/login');
+}
+
 app.get('/', (req, res) => {
   res.render('index.ejs');
+});
+
+// Auth routes ================================
+
+// Register
+
+app.get('/users/register', (req, res) => {
+  res.render('users/register.ejs');
+});
+
+app.post('/users/register', (req, res) => {
+  const newUser = new User({username: req.body.username});
+  User.register(newUser, req.body.password, (err, userCreated) => {
+    if(err){
+      console.log(err);
+      return res.render('users/register.ejs');
+    }
+    passport.authenticate('local')(req, res, () => {
+      res.redirect('/users');
+    });
+  });
+});
+
+
+// Login
+
+app.get('/users/login', (req, res) => {
+  res.render('users/login.ejs');
+});
+app.post('/users/login', passport.authenticate('local',
+{
+  successRedirect: '/users',
+  failureRedirect: '/users/login'
+}), (req, res) => {});
+
+// Logout
+
+app.get('/users/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
 });
 
 
