@@ -10,6 +10,9 @@ app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: false}));
 
 // Controller variables and MW
+const userController = require('./controllers/users.js');
+app.use('/users', userController);
+ 
 
 // mongo connection
 mongoose.Promise = global.Promise;
