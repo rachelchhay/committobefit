@@ -1,5 +1,7 @@
-<a href="/users/register">Sign Up</a>
 <a href="/">Home</a>
-<a href="/users">My Homepage</a>
+<%# This should only show up if the user is not signed in%>
+<a href="/users/register">Sign Up</a>
 <a href="/users/login">Login</a>
+<%# This should only show up if the user is signed in%>
+<a href="/users">My Profile</a>
 <a href="/users/logout">Logout</a>

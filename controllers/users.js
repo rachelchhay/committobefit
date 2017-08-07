@@ -27,9 +27,13 @@ const isLoggedIn = (req, res, next) => {
   res.redirect('/users/login');
 }
 
-
 router.get('/', isLoggedIn, (req, res) => {
-  res.render('users/index.ejs');
+  console.log(req.user._id);
+  User.findById(req.user._id, (err, user) => {
+    res.render('users/index.ejs', {
+      user: user
+    });
+  });
 });
 
 // Auth routes ================================
