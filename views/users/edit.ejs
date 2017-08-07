@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <nav>
+      <% include ../partials/nav.ejs %>
+    </nav>
+
+    <h1>Edit User Information</h1>
+
+    <form action="/users?_method=PUT" method="post">
+      Username: <input type="text" name="username" placeholder="new username">
+      Password: <input type="password" name="password" placeholder="new password">
+      <button>Submit Changes</button>
+    </form>
+
+  </body>
+</html>

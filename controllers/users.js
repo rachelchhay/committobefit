@@ -27,8 +27,9 @@ const isLoggedIn = (req, res, next) => {
   res.redirect('/users/login');
 }
 
+// User Profile Page (index.ejs)
 router.get('/', isLoggedIn, (req, res) => {
-  console.log(req.user._id);
+  console.log(req.user.username + ' is logged in');
   User.findById(req.user._id, (err, user) => {
     res.render('users/index.ejs', {
       user: user
@@ -36,7 +37,22 @@ router.get('/', isLoggedIn, (req, res) => {
   });
 });
 
-// Auth routes ================================
+
+// Edit user info
+router.get('/:id/edit', (req, res) => {
+  res.render('users/edit.ejs');
+});
+
+// Update user info
+router.put('/', (req, res) => {
+  User.findByIdAndUpdate(req.user.id, req.body, () => {
+    res.redirect('/users');
+  });
+});
+
+
+
+// Auth routes ========================================
 
 // Register
 
@@ -75,8 +91,19 @@ router.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 });
+// Auth routes END ======================================
 
 
+router.get('/:id', isLoggedIn, (req, res) => {
+
+});
+
+// Delete user
+router.delete('/:id', (req, res) => {
+  User.findByIdAndRemove(req.user.id, (err, removeUser) => {
+    res.redirect('/');
+  });
+});
 
 
 
