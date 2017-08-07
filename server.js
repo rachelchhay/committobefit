@@ -33,9 +33,9 @@ passport.deserializeUser(User.deserializeUser());
 // mongo connection
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost:27017/commitToBeFit', {
-  useMongoClient: true
-});
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/commitToBeFit'
+
+mongoose.connect(mongoUri, {useMongoClient: true});
 mongoose.connection.once('open', () => {
   console.log('connected to Mongo');
 });
@@ -52,8 +52,7 @@ app.get('/', (req, res) => {
   res.render('index.ejs');
 });
 
+const port = process.env.PORT || 3000;
 
-
-app.listen('3000', () => {
-  console.log('Ready to get fit ============================');
-});
+app.listen(port);
+console.log('Ready to get fit on port: ' + port);
