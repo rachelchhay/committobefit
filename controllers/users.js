@@ -38,17 +38,6 @@ router.get('/', isLoggedIn, (req, res) => {
 });
 
 
-// Edit user info
-router.get('/:id/edit', (req, res) => {
-  res.render('users/edit.ejs');
-});
-
-// Update user info
-router.put('/', (req, res) => {
-  User.findByIdAndUpdate(req.user.id, req.body, () => {
-    res.redirect('/users');
-  });
-});
 
 
 
@@ -93,6 +82,17 @@ router.get('/logout', (req, res) => {
 });
 // Auth routes END ======================================
 
+// Edit user info
+router.get('/:id/edit', (req, res) => {
+  res.render('users/edit.ejs');
+});
+
+// Update user info
+router.put('/', (req, res) => {
+    User.findByIdAndUpdate(req.user.id, {username: req.body.username}, (err, foundUser) => {
+      res.redirect('/users');
+    });
+});
 
 router.get('/:id', isLoggedIn, (req, res) => {
 
