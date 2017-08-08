@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
+const Videos = require('./videos.js');
 
 // create schema
 const UserSchema = new mongoose.Schema({
   username: {type: String, required: true},
-  password: {type: String}
+  password: {type: String},
+  videos: [Videos.schema]
 });
 
 // plugin for passport local

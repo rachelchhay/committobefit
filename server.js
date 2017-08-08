@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const User = require('./models/users.js');
+const Videos = require('./models/videos.js');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 
@@ -15,6 +16,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 // Controller variables and MW
 const userController = require('./controllers/users.js');
 app.use('/users', userController);
+const videosController = require('./controllers/videos.js');
+app.use('/videos', videosController);
 
 // Passport configuration
 app.use(require('express-session')({
