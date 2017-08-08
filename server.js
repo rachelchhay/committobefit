@@ -58,4 +58,4 @@ app.get('/', (req, res) => {
 const port = process.env.PORT || 3000;
 
 app.listen(port);
-console.log('Ready to get fit on port: ' + port);
+console.log('Ready to get fit on port: ' + port + ' ==============================');

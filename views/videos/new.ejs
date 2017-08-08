@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <nav>
+      <% include ../partials/nav.ejs %>
+    </nav>
+
+    <h1>Add A New Video</h1>
+
+    <form action="/videos" method="post">
+      Video Title: <input type="text" name="title"> <br>
+      Link: <input type="text" name="link"> <br>
+      Category of Workout:
+        <select type="text", name="category">
+          <option value="yoga">Yoga</option>
+          <option value="pilates">Pilates</option>
+          <option value="cycling">Cycling</option>
+          <option value="cardio">Cardio</option>
+          <option value="weights">Weights</option>
+          <option value="other">Other</option>
+        </select> <br>
+      Body Part: <input type="text" name="bodyPart"> <br>
+      Length: <input type="number" name="length"> <br>
+      Equipment needed: <input type="checkbox" name="equipment"> <br>
+      <button>Submit</button>
+    </form>
+  </body>
+</html>
