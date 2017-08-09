@@ -31,7 +31,7 @@ const isLoggedIn = (req, res, next) => {
 router.get('/', isLoggedIn, (req, res) => {
   console.log(req.user.username + ' is logged in');
   User.findById(req.user._id, (err, user) => {
-    console.log(req.user.videos);
+    console.log(user.videos);
     res.render('users/index.ejs', {
       user: user,
       videos: user.videos

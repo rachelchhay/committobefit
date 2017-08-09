@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Edit <%=video.title%></h1>
+
+    <form action="/videos/<%=video._id%>?_method=PUT" method="post">
+      Video Title: <input type="text" name="title" value="<%=video.title%>"> <br>
+      Link: <input type="text" name="link" value="<%=video.link%>"> <br>
+      Category of Workout:
+        <select type="text", name="category">
+          <option value="yoga">Yoga</option>
+          <option value="pilates">Pilates</option>
+          <option value="cycling">Cycling</option>
+          <option value="cardio">Cardio</option>
+          <option value="weights">Weights</option>
+          <option value="other">Other</option>
+        </select> <br>
+      Body Part: <input type="text" name="bodyPart" value="<%=video.bodyPart%>"> <br>
+      Length: <input type="number" name="length" value="<%=video.length%>"> <br>
+      Equipment needed: <input type="checkbox" name="equipment"> <br>
+
+      <% if(video.equipment) { %>
+          video.equipment = 'on'
+        <% } %>
+
+      <input type="hidden" name="postedBy" value="<%=video.postedBy%>">
+      <button>Submit</button>
+    </form>
+
+  </body>
+</html>

@@ -50,9 +50,25 @@ router.post('/', (req, res) => {
 // Video show page
 router.get('/:id', (req, res) => {
   Videos.findById(req.params.id, (err, foundVideo) => {
+    console.log(foundVideo);
     res.render('videos/show.ejs', {
       video: foundVideo
     });
+  });
+});
+
+// Video edit page
+router.get('/:id/edit', (req, res) => {
+  Videos.findById(req.params.id, (err, foundVideo) => {
+    res.render('videos/edit.ejs', {
+      video: foundVideo
+    });
+  });
+});
+
+router.put('/:id', (req, res) => {
+  Videos.findByIdAndUpdate(req.params.id, req.body, () => {
+    res.redirect('/users');
   });
 });
 
