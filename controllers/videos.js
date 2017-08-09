@@ -66,12 +66,24 @@ router.get('/:id/edit', (req, res) => {
   });
 });
 
+// ERR: can only update videos in the videos model
 router.put('/:id', (req, res) => {
   Videos.findByIdAndUpdate(req.params.id, req.body, () => {
     res.redirect('/users');
   });
 });
 
+// Deletes videos in all places
+router.delete('/:id', (req, res) => {
+  Videos.findById(req.params.id, (err, foundVideo) => {
+    User.findOne({'videos._id': req.params.id}, (err, foundUser) => {
+      foundUser.videos.id(req.params.id).remove();
+      foundUser.save((err, savedUser) => {
+        res.redirect('/users');
+      });
+    });
+  });
+});
 
 
 module.exports = router;

@@ -26,6 +26,10 @@
       <% } %>
 
         <a href="/videos/<%=videos[i]._id%>/edit">Edit Video</a>
+        <form action="/videos/<%=videos[i]._id%>?_method=DELETE" method="post">
+          <input type="submit" value="Delete Video">
+        </form>
+
     <% } %>
     <footer>
       <a href="/users/<%=user._id%>/edit">Edit User Info</a>
