@@ -25,7 +25,7 @@
           <h3>No equipment needed.</h3>
       <% } %>
 
-        <a href="/videos/<%=videos[i]._id%>/edit">Edit Video</a>
+        <a href="/videos/<%=user._id%>/<%=videos[i]._id%>/edit">Edit Video</a>
         <form action="/videos/<%=videos[i]._id%>?_method=DELETE" method="post">
           <input type="submit" value="Delete Video">
         </form>

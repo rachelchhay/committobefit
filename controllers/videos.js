@@ -57,22 +57,6 @@ router.get('/:id', (req, res) => {
   });
 });
 
-// Video edit page
-router.get('/:id/edit', (req, res) => {
-  Videos.findById(req.params.id, (err, foundVideo) => {
-    res.render('videos/edit.ejs', {
-      video: foundVideo
-    });
-  });
-});
-
-// ERR: can only update videos in the videos model
-router.put('/:id', (req, res) => {
-  Videos.findByIdAndUpdate(req.params.id, req.body, () => {
-    res.redirect('/users');
-  });
-});
-
 // Deletes videos in all places
 router.delete('/:id', (req, res) => {
   Videos.findById(req.params.id, (err, foundVideo) => {
@@ -84,6 +68,41 @@ router.delete('/:id', (req, res) => {
     });
   });
 });
+
+// Video update route that includes user and vid ID
+router.get('/:user_id/:video_id/edit', (req, res) => {
+  Videos.findById(req.params.video_id, (err, foundVideo) => {
+    User.findById(req.params.user_id, (err, foundUser) => {
+      User.findOne({'videos._id': req.params.video_id}, (err, foundUserVideo) => {
+        res.render('videos/edit.ejs', {
+          video: foundVideo,
+          user: foundUser,
+          userVideo: foundUserVideo
+        });
+      });
+    });
+  });
+});
+
+// Video updated everywhere
+router.put('/:id', (req, res) => {
+  console.log('==================================');
+  Videos.findByIdAndUpdate(req.params.id, req.body, (err, updatedVideo) => {
+    User.findOne({'videos._id': req.params.id}, (err, foundUser) => {
+      Videos.findOne({'_id': req.params.id}, (err, foundUpdatedVid) => {
+        console.log('Updated Video found: ' + foundUpdatedVid);
+        foundUser.videos.id(req.params.id).remove();
+        foundUser.save((err, savedUser) => {
+          foundUser.videos.push(foundUpdatedVid)
+          foundUser.save((err, updatedUser) => {
+            res.redirect('/users');
+          });
+        });
+      });
+    });
+  });
+});
+
 
 
 module.exports = router;
