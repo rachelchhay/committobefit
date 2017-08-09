@@ -11,8 +11,10 @@
 
     <h1>Workout Videos</h1>
     <% for(let i = 0; i < videos.length; i++) { %>
-      <h3><%= videos[i].title %></h3>
-      <h3><%= videos[i].link %></h3>
+      <h3><a href="videos/<%=videos[i]._id%>"><%= videos[i].title %></a></h3>
+      
+      <iframe width="560" height="315" src="<%= videos[i].link %>" frameborder="0" allowfullscreen></iframe>
+
       <h3><%= videos[i].length %> minutes long</h3>
       <h3><%= videos[i].bodyPart %> workout</h3>
       <% if(videos[i].equipment === true){ %>

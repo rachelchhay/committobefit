@@ -36,7 +36,7 @@ passport.deserializeUser(User.deserializeUser());
 // mongo connection
 mongoose.Promise = global.Promise;
 
-const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/commitToBeFit'
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/fit'
 
 mongoose.connect(mongoUri, {useMongoClient: true});
 mongoose.connection.once('open', () => {

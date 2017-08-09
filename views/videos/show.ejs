@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <nav>
+      <% include ../partials/nav.ejs %>
+    </nav>
+
+    <h1><%=video.title%></h1>
+
+    <iframe width="560" height="315" src="<%= video.link %>" frameborder="0" allowfullscreen></iframe>
+
+    <h3><%= video.length %> minutes long</h3>
+    <h3><%= video.bodyPart %> workout</h3>
+    <% if(video.equipment === true){ %>
+        <h3>Equipment needed.</h3>
+    <% } else { %>
+        <h3>No equipment needed.</h3>
+    <% } %>
+
+
+  </body>
+</html>

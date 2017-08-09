@@ -10,7 +10,8 @@ const VideoSchema = new mongoose.Schema({
   bodyPart: String,
   length: {type: Number, required: true},
   equipment: {type: Boolean},
-  comments: []
+  postedBy: String,
+  comments: [String]
 });
 //
 // plugin for passport local
