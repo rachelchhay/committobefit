@@ -9,8 +9,8 @@ const VideoSchema = new mongoose.Schema({
   category: {type: String, required: true},
   bodyPart: String,
   length: {type: Number, required: true},
-  equipment: {type: Boolean},
-  postedBy: String,
+  equipment: Boolean,
+  username: String,
   comments: [String]
 });
 //
