@@ -17,3 +17,25 @@ body {
 form {
   color: #000;
 }
+
+.navbar {
+  background-color: #4EC5C1;
+  opacity: 0.9;
+  border: none;
+}
+
+.navbar li:hover {
+  background-image: url('/images/chalkboard.jpg');
+  background-color: #000;
+  border-radius: 3px;
+}
+
+.navbar .navbar-default .navbar-fixed-top {
+  border-bottom: 0;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  text-decoration: none;
+  color: #fff;
+
+}

@@ -12,29 +12,48 @@
 
       <% include ../partials/navLoggedIn.ejs %>
 
-    <h1><%=user.username%>'s Profile (need to be logged in first)</h1>
+    <h1><%=user.username%>'s Profile</h1>
 
-    <a href="/videos/<%=user._id%>/new">Add New Video</a>
+    <a id="new-vid" class="add-edit-button" href="/videos/<%=user._id%>/new">Add New Video</a>
     <br>
+  <div class="container">
 
     <% for(let i = 0; i < videos.length; i++) { %>
       <h3>Title: <a href="videos/<%=videos[i]._id%>"><%=videos[i].title%></a></h3> <br>
 
       <iframe width="560" height="315" src="<%= videos[i].link %>" frameborder="0" allowfullscreen></iframe>
 
-      <h3>Length: <%=videos[i].length%></h3>
-      <% if(videos[i].equipment === true){ %>
-          <h3>Equipment needed.</h3>
-      <% } else { %>
-          <h3>No equipment needed.</h3>
-      <% } %>
+      <div class="row">
 
-        <a href="/videos/<%=user._id%>/<%=videos[i]._id%>/edit">Edit Video</a>
-        <form action="/videos/<%=videos[i]._id%>?_method=DELETE" method="post">
-          <input type="submit" value="Delete Video">
-        </form>
+      <div class="col-md-4">
+        <h3>Length: <%=videos[i].length%> minutes</h3>
+      </div>
+      <div class="col-md-4">
+        <% if(videos[i].equipment === true){ %>
+            <h3>Equipment needed.</h3>
+        <% } else { %>
+            <h3>No equipment needed.</h3>
+        <% } %>
+      </div>
+      </div>
 
+      <div class="row">
+
+        <div class="col-md-4">
+          <a class="add-edit-button" href="/videos/<%=user._id%>/<%=videos[i]._id%>/edit">Edit Video</a>
+        </div>
+
+        <div class="col-md-4">
+          <form action="/videos/<%=videos[i]._id%>?_method=DELETE" method="post">
+            <input class="delete" type="submit" value="Delete Video">
+          </form>
+        </div>
+
+      </div>
     <% } %>
+
+  </div>
+
     <footer>
       <a href="/users/<%=user._id%>/edit">Edit User Info</a>
 
