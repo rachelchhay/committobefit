@@ -19,6 +19,8 @@ app.use('/users', userController);
 const videosController = require('./controllers/videos.js');
 app.use('/videos', videosController);
 
+app.use(express.static('public'));
+
 // Passport configuration
 app.use(require('express-session')({
   secret: 'I love cake',
@@ -30,7 +32,6 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
 
 
 // mongo connection
@@ -52,7 +53,7 @@ const isLoggedIn = (req, res, next) => {
 }
 
 app.get('/', (req, res) => {
-  res.render('index.ejs');
+      res.render('index.ejs');
 });
 
 const port = process.env.PORT || 3000;

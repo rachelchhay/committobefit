@@ -28,7 +28,7 @@ router.get('/:id/new', (req, res) => {
 // Create videos
 router.post('/', (req, res) => {
   console.log(req.body);
-  console.log(req.body.postedBy);
+  console.log(req.body.username);
   if(req.body.equipment === 'on') {
     req.body.equipment = true;
   } else {
@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
 
   // res.send(req.body);
   Videos.create(req.body, (err, addedVideo) => {
-    User.findOne({username: req.body.postedBy}, (err, foundUser) => {
+    User.findOne({username: req.body.username}, (err, foundUser) => {
       console.log(foundUser);
       foundUser.videos.push(addedVideo)
       foundUser.save((err, data) => {
