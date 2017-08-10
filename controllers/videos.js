@@ -5,6 +5,15 @@ const router = express.Router();
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 
+// isLoggedIn function
+const isLoggedIn = (req, res, next) => {
+  if(req.isAuthenticated()){
+    return next();
+  }
+  res.redirect('/users/login');
+}
+
+
 // Video index page (should display all vids)
 router.get('/', (req, res) => {
   Videos.find({}, (err, foundVideos) => {
@@ -20,7 +29,8 @@ router.get('/:id/new', (req, res) => {
   console.log('User ID ' + req.params.id);
   User.findById(req.params.id, (err, user) => {
     res.render('videos/new.ejs', {
-      user: user
+      user: user,
+      currentUser: req.params.id
     });
   });
 });
@@ -50,7 +60,6 @@ router.post('/', (req, res) => {
 // Video show page
 router.get('/:id', (req, res) => {
   Videos.findById(req.params.id, (err, foundVideo) => {
-    console.log(foundVideo);
     res.render('videos/show.ejs', {
       video: foundVideo
     });
@@ -77,7 +86,8 @@ router.get('/:user_id/:video_id/edit', (req, res) => {
         res.render('videos/edit.ejs', {
           video: foundVideo,
           user: foundUser,
-          userVideo: foundUserVideo
+          userVideo: foundUserVideo,
+          currentUser: req.params.user_id
         });
       });
     });

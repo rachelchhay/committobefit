@@ -89,7 +89,6 @@ router.get('/logout', (req, res) => {
 // Edit user info
 router.get('/:id/edit', (req, res) => {
   User.findById(req.params.id, (err, foundUser) => {
-    console.log('Current User: ' + req.user.username);
     res.render('users/edit.ejs', {
       currentUser: req.user.username
     });
