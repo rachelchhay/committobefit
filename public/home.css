@@ -1,7 +1,7 @@
-/*code came from https://github.com/nax3t/background-slider/blob/master/public/stylesheets/landing.css*/
+/*code modified from https://github.com/nax3t/background-slider/blob/master/public/stylesheets/landing.css*/
 
 body {
-  background-color: #000;
+  background-image: url('/images/barbell.jpg');
 }
 
 #home-header {
@@ -38,7 +38,7 @@ body {
   background-repeat: no-repeat;
   opacity: 0;
   z-index: 0;
-  animation: imageAnimation 50s linear infinite;
+  animation: imageAnimation 90s linear infinite;
 }
 
 .slideshow li:nth-child(1) {

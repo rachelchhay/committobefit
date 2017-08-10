@@ -1,0 +1,26 @@
+<%if(!currentUser) { %>
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <ul class="nav navbar-nav">
+
+      <li><a href="/">Home</a></li>
+      <li><a href="/users/register">Sign Up</a></li>
+      <li><a href="/users/login">Login</a></li>
+      <li><a href="/videos">Workout Videos</a></li>
+    </ul>
+  </div>
+  </nav>
+
+<%} else { %>
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/videos">Workout Videos</a></li>
+      <li><a href="/users">My Profile</a></li>
+      <li><a href="/users/logout">Logout</a></li>
+    </ul>
+  </div>
+  </nav>
+
+<%}%>

@@ -1,0 +1,19 @@
+html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background-image: url('/images/chalkboard.jpg');
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  color: #fff;
+  padding-top: 70px;
+}
+/*change later*/
+form {
+  color: #000;
+}
