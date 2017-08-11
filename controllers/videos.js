@@ -45,13 +45,12 @@ router.post('/', (req, res) => {
     req.body.equipment = false;
   }
 
-  // res.send(req.body);
   Videos.create(req.body, (err, addedVideo) => {
     User.findOne({username: req.body.username}, (err, foundUser) => {
       console.log(foundUser);
       foundUser.videos.push(addedVideo)
       foundUser.save((err, data) => {
-        res.redirect('/videos');
+        res.redirect('/users');
       });
     });
   });
@@ -70,9 +69,13 @@ router.get('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   Videos.findById(req.params.id, (err, foundVideo) => {
     User.findOne({'videos._id': req.params.id}, (err, foundUser) => {
+      console.log('Found Video: ' + foundVideo);
       foundUser.videos.id(req.params.id).remove();
       foundUser.save((err, savedUser) => {
-        res.redirect('/users');
+        foundVideo.remove();
+        foundVideo.save((err, savedVideo) => {
+          res.redirect('/users');
+        });
       });
     });
   });

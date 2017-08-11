@@ -5,37 +5,60 @@
     <title></title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Boogaloo|Permanent+Marker" rel="stylesheet">
     <link rel="stylesheet" href="/form.css">
 
   </head>
-  <body>
+  <body class='container'>
 
       <% include ../partials/navLoggedIn.ejs %>
 
-    <h1>Edit <%=video.title%></h1>
+    <h1>Edit: <%=video.title%></h1>
+
+      <img src="/images/addImage.jpg">
+
 
     <form action="/videos/<%=video._id%>?_method=PUT" method="post">
-      Video Title: <input type="text" name="title" value="<%=video.title%>"> <br>
-      Link: <input type="text" name="link" value="<%=video.link%>"> <br>
-      Category of Workout:
-        <select type="text", name="category">
-          <option value="yoga">Yoga</option>
-          <option value="pilates">Pilates</option>
-          <option value="cycling">Cycling</option>
-          <option value="cardio">Cardio</option>
-          <option value="weights">Weights</option>
-          <option value="other">Other</option>
-        </select> <br>
-      Body Part: <input type="text" name="bodyPart" value="<%=video.bodyPart%>"> <br>
-      Length: <input type="number" name="length" value="<%=video.length%>"> <br>
-      Equipment needed: <input type="checkbox" name="equipment"> <br>
+      <div class="form-group">
+        Video Title: <input class="form-control" type="text" name="title" value="<%=video.title%>"> <br>
+      </div>
 
-      <% if(video.equipment) { %>
-          video.equipment = 'on'
-        <% } %>
+      <div class="form-group">
+        Link: <input class="form-control" type="text" name="link" value="<%=video.link%>"> <br>
+      </div>
 
-      <input type="hidden" name="username" value="<%=video.username%>">
-      <button>Submit</button>
+      <div class="form-group">
+        Category of Workout:
+          <select class="form-control", type="text", name="category">
+            <option value="yoga">Yoga</option>
+            <option value="pilates">Pilates</option>
+            <option value="cycling">Cycling</option>
+            <option value="cardio">Cardio</option>
+            <option value="weights">Weights</option>
+            <option value="other">Other</option>
+          </select> <br>
+      </div>
+
+      <div class="form-group">
+        Body Part: <input class="form-control" type="text" name="bodyPart" value="<%=video.bodyPart%>"> <br>
+      </div>
+
+      <div class="form-group">
+        Length: <input class="form-control" type="number" name="length" value="<%=video.length%>"> <br>
+      </div>
+
+      <div>
+        Equipment needed: <input type="checkbox" name="equipment"
+        <% if(video.equipment) { %>
+            checked
+          <% } %>
+          >
+
+      </div>
+
+        <input type="hidden" name="username" value="<%=video.username%>">
+        <button>Submit</button>
+
     </form>
 
   </body>

@@ -2,7 +2,28 @@
 
 body {
   background: #000;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 80px;
 }
+
+.home-button {
+  font-family: 'Boogaloo', cursive;
+  font-size: 20px;
+  border-radius: 5px;
+  background-color: #4EC5C1;
+  border: 1px solid #4EC5C1;
+  padding: 10px;
+  color: #fff;
+
+}
+
+.home-button:hover {
+  background-color: #5AE3DE;
+  box-shadow: 3px 3px 3px #706E69;
+  color: #000;
+  text-decoration: none;
+}
+
 
 #home-header {
   z-index: 1;
@@ -14,6 +35,8 @@ body {
 #home-header h1 {
   color: #fff;
 }
+
+
 
 .slideshow {
   position: fixed;

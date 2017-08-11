@@ -5,6 +5,7 @@
     <title></title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Boogaloo|Permanent+Marker" rel="stylesheet">
     <link rel="stylesheet" href="/main.css">
 
   </head>
@@ -12,7 +13,9 @@
 
       <% include ../partials/navLoggedIn.ejs %>
 
-    <h1><%=user.username%>'s Profile</h1>
+      <div class="header">
+        <h1 class="header-title"><%=user.username%>'s Profile</h1>
+      </div>
 
     <a id="new-vid" class="add-edit-button" href="/videos/<%=user._id%>/new">Add New Video</a>
     <br>
@@ -51,15 +54,14 @@
 
       </div>
     <% } %>
-
   </div>
 
-    <footer>
-      <a href="/users/<%=user._id%>/edit">Edit User Info</a>
 
-      <form action="/users/<%=user._id%>?_method=DELETE" method="post">
-        <input type="submit" value="Delete Account">
-      </form>
+    <footer>
+      <div class="footer">
+        <a href="/users/<%=user._id%>/edit">Edit User Info</a>
+      </div>
+
     </footer>
 
 

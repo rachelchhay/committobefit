@@ -5,10 +5,11 @@
     <title></title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Boogaloo|Permanent+Marker" rel="stylesheet">
     <link rel="stylesheet" href="/form.css">
 
   </head>
-  <body>
+  <body class="container">
     <% include ../partials/navLoggedIn.ejs %>
 
     <h1>Edit User Information</h1>
@@ -17,6 +18,13 @@
       Username: <input type="text" name="username" placeholder="new username">
       <button>Submit Changes</button>
     </form>
+
+    <div class="footer">
+      <form action="/users/<%=user._id%>?_method=DELETE" method="post">
+        <input type="submit" value="Delete Account">
+      </form>
+    </div>
+
 
   </body>
 </html>

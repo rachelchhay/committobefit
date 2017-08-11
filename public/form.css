@@ -10,12 +10,16 @@ body {
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  color: #fff;
+  color: #EC576B;
   padding-top: 70px;
+  background-color: #21201E;
+  font-family: 'Boogaloo', cursive;
+  font-size: 25px;
 }
-/*change later*/
-form {
-  color: #000;
+
+h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 50px;
 }
 
 .navbar {
@@ -34,8 +38,54 @@ form {
   border-bottom: 0;
 }
 
+.navbar-default .navbar-nav>li>a {
+  color: #fff;
+}
+
 .navbar-default .navbar-nav>li>a:hover {
   text-decoration: none;
-  color: #fff;
+  color: #EC576B;
 
+}
+
+.footer input {
+  border: none;
+  background-color: #ff0000;
+  color: #fff;
+  border-radius: 3px;
+  margin-top: 30px;
+}
+
+/*form styling*/
+.form-control {
+  width: 50%;
+}
+
+button {
+  text-decoration: none;
+  border: 1px solid #86E66B;
+  background-color: #86E66B;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px;
+  color: #fff;
+  display: table-cell;
+}
+
+
+button:hover {
+  text-decoration: none;
+  background-color: #FF7283;
+  border: 3px solid #FF7283;
+  color: #000;
+  box-shadow: 3px 3px 3px #706E69;
+}
+
+
+
+
+@media (max-width: 765px) {
+  body {
+    padding-top: 190px;
+  }
 }

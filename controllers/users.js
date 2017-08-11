@@ -90,7 +90,8 @@ router.get('/logout', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   User.findById(req.params.id, (err, foundUser) => {
     res.render('users/edit.ejs', {
-      currentUser: req.user.username
+      user: foundUser,
+      currentUser: req.user
     });
   });
 });
@@ -103,7 +104,6 @@ router.put('/', (req, res) => {
 });
 
 router.get('/:id', isLoggedIn, (req, res) => {
-
 });
 
 // Delete user
